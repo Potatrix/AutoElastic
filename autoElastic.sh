@@ -19,7 +19,7 @@ echo "enabling Elasticsearch, kibana, filebeat, and metricbeat"
 systemctl enable elasticsearch kibana filebeat metricbeat
 
 # Configure Kibana to listen on 0.0.0.0
-sed -i 's/#server.host: "localhost"/server.host 0.0.0.0/g' /etc/kibana/kibana.yml
+sed -i 's/#server.host: "localhost"/server.host: 0.0.0.0/g' /etc/kibana/kibana.yml
 
 # Configure Elasticsearch to listen on 0.0.0.0
 sed -i 's/#cluster.initial_master_nodes: ["node-1", "node-2"]/cluster.initial_master_nodes: ["node1"]/g' /etc/elasticsearch/elasticsearch.yml
@@ -30,8 +30,8 @@ echo "How many GB of RAM do you want Elasticsearch to use? (Recommend no more th
 
 read ramGigs
 
-sed -i "s/-Xms1g/-Xms$ramGigsg/g" /etc/elasticsearch/jvm.options
-sed -i "s/-Xmx1g/-Xmx$ramGigsg/g" /etc/elasticsearch/jvm.options
+sed -i "s/-Xms1g/-Xms$ramGigs\g/g" /etc/elasticsearch/jvm.options
+sed -i "s/-Xmx1g/-Xmx$ramGigs\g/g" /etc/elasticsearch/jvm.options
 systemctl start elasticsearch kibana
 echo "running metricbeat and filebeat setup"
 metricbeat setup
