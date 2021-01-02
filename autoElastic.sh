@@ -16,7 +16,7 @@ apt-get update
 apt-get install elasticsearch kibana filebeat metricbeat
 
 echo "enabling Elasticsearch, kibana, filebeat, and metricbeat"
-systemctl enable elasticsearch kibana filebeat metricbeat
+systemctl enable elasticsearch kibana filebeat metricbeat auditbeat
 
 # Configure Kibana to listen on 0.0.0.0
 sed -i 's/#server.host: "localhost"/server.host: 0.0.0.0/g' /etc/kibana/kibana.yml
@@ -36,6 +36,8 @@ systemctl start elasticsearch kibana
 echo "running metricbeat and filebeat setup"
 metricbeat setup
 filebeat setup
+auditbeat setup
 metricbeat test output
 filebeat test output
-systemctl start filebeat metricbeat
+auditbeat test output
+systemctl start filebeat metricbeat auditbeat
