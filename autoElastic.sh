@@ -22,9 +22,9 @@ systemctl enable elasticsearch kibana filebeat metricbeat
 sed -i 's/#server.host: "localhost"/server.host: 0.0.0.0/g' /etc/kibana/kibana.yml
 
 # Configure Elasticsearch to listen on 0.0.0.0
-sed -i 's/#cluster.initial_master_nodes: ["node-1", "node-2"]/cluster.initial_master_nodes: ["node1"]/g' /etc/elasticsearch/elasticsearch.yml
+sed -i 's/#cluster.initial_master_nodes: \["node-1", "node-2"\]/cluster.initial_master_nodes: \["node1"\]/g' /etc/elasticsearch/elasticsearch.yml
 
-sed -i 's/#network.host: 192.168.0.1/network.host: 0.0.0.0/g'
+sed -i 's/#network.host: 192.168.0.1/network.host: 0.0.0.0/g' /etc/elasticsearch/elasticsearch.yml
 
 echo "How many GB of RAM do you want Elasticsearch to use? (Recommend no more than 80% total RAM, and not more than 32GB): "
 
