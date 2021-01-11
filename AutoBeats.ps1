@@ -16,5 +16,5 @@ Write-Host "writing up config"
 
 # Move files to appropriate place
 Write-Host "moving files to appropriate place"
-Move-Item -Path "~\Downloads\Winlogbeat\*" -Destination "~\Downloads\Winlogbeat2"
-Move-Item -Path "~\Downloads\Metricbeat\*" -Destination "~\Downloads\Metricbeat2"
+Move-Item -Path "~\Downloads\Winlogbeat" -Destination "'C:\Program Files\'"
+Move-Item -Path "~\Downloads\Metricbeat" -Destination "'C:\Program Files\'"
